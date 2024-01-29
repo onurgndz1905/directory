@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="PersondetailToolbarTitle" type="String" />
+        <variable name="PersondetailFragment" type="com.example.rehber.ui.fragment.PersondetailFragment" />
+        <variable name="Personarticle" type="com.example.rehber.data.entity.Persones" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.PersondetailFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarpersondetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:title="@{PersondetailToolbarTitle}"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarpersondetail">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextpersonupdatename"
+                android:layout_width="match_parent"
+                android:text="@{Personarticle.personeName}"
+                android:layout_height="wrap_content"
+                android:hint="Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ediTextupdatepersonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{Personarticle.personeNumber}"
+                android:hint="Phone Number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonupdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="40dp"
+            android:onClick="@{() -> PersondetailFragment.buttonupdate(Personarticle.persone_id,editTextpersonupdatename.getText().toString(),ediTextupdatepersonenumber.getText().toString())}"
+            android:layout_marginEnd="64dp"
+            android:text="Update"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
